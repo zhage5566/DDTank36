@@ -1,0 +1,19 @@
+# Build / runtime / local secrets
+.vs/
+**/obj/
+config/build/
+logs/
+data/
+*.log
+*.cache
+*.copycomplete
+.env
+.env.*
+GM管理凭据.txt
+*.mdf
+*.ldf
+*.bak
+*.zip
+*.7z
+*.rar
+prerequisites/*.msi

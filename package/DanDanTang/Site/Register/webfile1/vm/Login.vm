@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登陆页</title>
+<style type="text/css">
+<!--
+html{
+	SCROLLBAR-FACE-COLOR: #FCC274;
+	SCROLLBAR-HIGHLIGHT-COLOR: #6c6c90;
+	SCROLLBAR-SHADOW-COLOR: #fcfcfc;
+	SCROLLBAR-3DLIGHT-COLOR: #fcfcfc;
+	SCROLLBAR-ARROW-COLOR: #240024;
+	SCROLLBAR-TRACK-COLOR: #FFF5D9;
+	SCROLLBAR-DARKSHADOW-COLOR: #48486c;
+	SCROLLBAR-BASE-COLOR: #FEEAAB;
+
+}
+a{
+        color:#CC0000;
+}
+a:hover{
+        color:#CC0000;
+}
+body{
+	margin:0px auto;
+	padding:0px;
+	font-size:12px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	line-height:22px;
+	background-color:#F4C867;
+}
+img{
+	border:0px;
+}
+.NavReg{
+	padding-top:4px;
+	padding-bottom:4px;
+}
+.NavReg a{
+	color:#009933;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.NavReg a:hover{
+	color:#009933;
+	font-weight: bold;
+	text-decoration: none;
+}
+.ForgetPassword{
+	padding-top:4px;
+}
+.ForgetPassword a{
+	color:#CC0000;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.ForgetPassword a:hover{
+	color:#CC0000;
+	font-weight: bold;
+	text-decoration: none;
+}
+.TopLogin{
+	background-image:url($WebfileServer/images/Login_bg.jpg);
+	height:30px;
+        line-height:28px;
+}
+.Login_top_input{
+	width:120px;
+	font-size:12px;
+	color:#666666;
+	padding:2px;
+}
+-->
+</style>
+
+</head>
+
+<body><form action="login_check.aspx" method="post" name="form1">
+   <div  class="TopLogin">
+	<div  #if( $User_Name=="") style="display:block;" #else style="display:none;" #end>
+	      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>&nbsp;</td>
+        <td width="90" align="center">
+        <div class="NavReg"><a href="reg.aspx" target="_blank">快速注册</a></div>
+        </td>
+        <td width="40" align="center">帐号</td>
+        <td width="130"><input name="TextName" type="text" style="ime-mode:disabled"  class="Login_top_input" id="TextName" maxlength="18" /></td>
+        <td width="43" align="center">密码</td>
+  <td width="130"><label>
+          <input name="TextPassword" type="password" class="Login_top_input" id="TextPassword" maxlength="18" />
+        </label></td>
+        <td width="61">
+		<input id="Ib_Login" style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px" type="image" src="$WebfileServer/images/Login_icon.gif"   name="Ib_Login" />
+</td>
+        <td width="100" align="center"><div class="ForgetPassword"><a href="#">忘记密码</a></div></td>
+      </tr>
+    </table>
+    </div>
+	
+	
+	
+  <div #if( $User_Name!="") style="display:block;" #else style="display:none;" #end>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="right"><label>您好！$User_Name <a href="Center_Set_Password.aspx" target="_blank">修改密码</a> <a href="logout_before.aspx">退出登录</a></label></td>
+          <td width="100">&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+	
+	
+</div>
+
+</form>
+</body>
+</html>

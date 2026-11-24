@@ -1,0 +1,1 @@
+function copyQQ(){var t=document.createElement('textarea');t.value='961077680';t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}document.body.removeChild(t);document.getElementById('copy-status').textContent=ok?'已复制 QQ：961077680':'QQ：961077680，请长按或手动复制。';}

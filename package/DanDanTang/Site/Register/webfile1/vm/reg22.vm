@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>弹弹堂 - 用户注册</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="$WebfileServer/style/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$WebfileServer/js/PassWordProof.js"></script>
+<script type="text/javascript" src="$WebfileServer/js/passwordstrength_asc1.js"></script>
+<script type="text/javascript" language="javascript">
+　　　　var xmlHttp = null;
+　　　　var listLable=null;
+　　　　function CheckUser(Control,lable,type)
+　　　　{
+　　　　　　try
+　　　　　　{
+　　　　　　　　xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+　　　　　　　　　　　　　　}
+　　　　　　catch(err1)
+　　　　　　{
+　　　　　　　　try
+　　　　　　　　{
+   　　　　　　　xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+　　　　　　　　}
+　　　　　　　　catch(err2)
+　　　　　　　　{
+　　　　　　　　　　xmlHttp = new XMLHttpRequest();　        　 
+　　　　　　　　}
+　　　　　　}
+          listLable=lable;
+　　　　　　var data = document.getElementById(Control);
+　　　　　　var url = "check.aspx?ControlData=" + data.value+"&&type="+type;
+　　　　　　xmlHttp.open("GET",url,true);
+　　　　　　xmlHttp.onreadystatechange = OnHandler;
+　　　　　　xmlHttp.send(null);
+　　   }
+　　　 function OnHandler()
+　　　　{
+　　　　　　if(xmlHttp.readyState == 4)
+　　　　　　{
+　　　　　　　　var isValid = xmlHttp.responseText;
+　　　　　　　　var exists = document.getElementById(listLable);
+　　　　　　　　exists.innerHTML = isValid;
+　　　　　　}
+　　　　}
+　　 function checkconfirmpwd(tp1,tp2,list3)
+     {
+          var two= document.getElementById(list3);
+           if(document.getElementById(tp1).value==document.getElementById(tp2).value)            {                                             
+              if(document.getElementById(tp1).value.length>=6)
+                {
+                  two.innerHTML = "<div class=\"ok\">成功</div>";
+                }
+               else
+               {
+                two.innerHTML = "<div class=\"err\">确认密码长度不够</div>";
+               }
+
+            } 
+            else
+            {
+ 　　　　　　　　two.innerHTML = "<div class=\"err\">您两次输入的登录密码不一致</div>";
+            }
+      }     
+function killErrors() //杀掉所有的出错信息
+  { 
+	return true; 
+  } 
+  window.onerror = killErrors; 
+</script>
+<body>
+	<form action="reg_ok.aspx" method="post" name="form1">
+        <p>
+            &nbsp;
+        </p>
+        <p>
+            &nbsp;
+        </p>	
+    <div class="main">
+        <div class="top_bg_a"></div>
+        <div class="reg_bg">
+            <div class="nav">
+					<ul>
+						<li class="logo"><a href="http://127.0.0.1/" title="弹弹堂"></a></li>
+						<li class="space"></li>
+						<li class="nav_BackHome"><a href="Userlogin.aspx" title="注册账号"></a></li>
+						<li class="reg_up"></li>
+						<li class="change"><a href="Change_Password.aspx" title="修改密码"></a></li>				
+						<li class="forget"><a href="Forget_password.aspx" title="忘记密码"></a></li>
+						<li class="ingame"><a href="http://127.0.0.1/" title="弹弹堂"></a></li>					
+					</ul>
+            </div>
+            <div class="reg_content ">
+                <div class="reg_title"><span class="title_Highlight">带*的为必填项：</span>（请务必正确填写以下信息，以便您能顺利注册成为弹弹堂的用户）</div>
+                <div class="reg_table">
+                        <table width="650" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="80" height="32" align="right">用户名：</td>
+                                <td width="277">
+                                    <input type="text" name="TextName" id="TextName" class="reg_input" /> <span class="remind">*</span>
+                                </td>
+                                <td>
+                                    <span class="tag_text">可使用字母、数字和下划线，长度为6-12个字符</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" colspan="3">
+                                    <div class="reg_s_line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="32" align="right">密　码：</td>
+                                <td>
+                                    <INPUT class="reg_input" onblur=CheckPassword() onkeydown=CheckPwdLength(event) id=TextPassword onfocus=DisplayHelp(2) tabIndex=3 onkeyup=ps.update(this.value); maxLength=10 size=40 type=password name=TextPassword />
+                                    <span class="remind">*</span>
+                                </td>
+                                <td><span class="tag_text">密码长度6～16位，字母区分大小写</span></td>
+                            </tr>
+                            <tr>
+                                <td height="32" align="right"><span class="reg_font_c">密码强度：</span></td>
+                                <td>
+                                    <!-- 密码强度 开始 -->
+                                    <SCRIPT language=javascript>
+                                        var ps = new PasswordStrength();
+                                        ps.setMinLen(4);
+                                    </SCRIPT>
+                                    <!-- 密码强度 结束 -->
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="32" align="right">确认密码：</td>
+                                <td>
+                                    <input type="password" name="TextPassword2" id="TextPassword2" class="reg_input" />
+                                    <span class="remind">*</span>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="8" colspan="3">
+                                    <div class="reg_s_line"></div>
+                                </td>
+                            </tr>							
+							<tr>
+								<td align="right">选择性别：</td>
+								<td><label for="radio">
+								<input name="usersex" type="radio"   value="true" checked="checked" />
+								男</label>
+								<label for="radio2"> 
+								<input type="radio" name="usersex"  value="false" />
+								女
+								</label> <span class="remind">*</span> </td>
+								<td><span class="tag_text">请慎重选择，注册后将不可再次修改</span></td>
+							</tr>
+							<tr>						
+                            <tr>
+                                <td height="8" colspan="3">
+                                    <div class="reg_s_line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="32" align="right">电子邮件：</td>
+                                <td><input type="text" name="TextEmail" id="TextEmail" class="reg_input" />
+								<span class="remind">*</span>
+								</td>
+                                <td><span class="tag_text">请填写正确电子邮件地址，用于密码找回和密码修改</span></td>
+                            </tr>
+                            <tr>
+                                <td height="8" colspan="3">
+                                    <div class="reg_s_line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="32" align="right">验证码：</td>
+                                <td><input type="text" name="Tb_VerifyCode" id="Tb_VerifyCode" class="reg_input" /></td>
+								<td><img id="imgVerify" width="84" height="36"   src="VerifyCode.aspx?" alt="看不清？点击更换" onclick="this.src=this.src+'?'" /></td>
+                            </tr>								
+                            <tr>
+                                <td height="124">&nbsp;</td>
+                                <td colspan="2">
+                                    <table width="200" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+											<td valign="bottom" width="112"><input id="Ib_Reg" style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px" type="image" src="$WebfileServer/images/reg_botton.jpg" onmouseover="src='$WebfileServer/images/reg_botton.jpg'"  onmouseout="src='$WebfileServer/images/reg_botton.jpg'" name="Ib_Reg" /></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="bottom_bg_a"></div>
+        <div class="copyright_web">&copy; 2022-2023 经典怀旧.com All Rights Reserved. 经典弹弹堂 版权所有</div>
+    </div>
+	</form>
+</body>
+</html>

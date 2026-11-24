@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="bbs.aspx.cs" Inherits="DanDanTang.bbs" %>

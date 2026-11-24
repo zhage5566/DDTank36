@@ -1,0 +1,666 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>弹弹堂</title>
+<style type="text/css">
+<!--
+html{
+	SCROLLBAR-FACE-COLOR: #FCC274;
+	SCROLLBAR-HIGHLIGHT-COLOR: #6c6c90;
+	SCROLLBAR-SHADOW-COLOR: #fcfcfc;
+	SCROLLBAR-3DLIGHT-COLOR: #fcfcfc;
+	SCROLLBAR-ARROW-COLOR: #240024;
+	SCROLLBAR-TRACK-COLOR: #FFF5D9;
+	SCROLLBAR-DARKSHADOW-COLOR: #48486c;
+	SCROLLBAR-BASE-COLOR: #FEEAAB;
+
+}
+body{
+	margin:0px auto;
+	padding:0px;
+	font-size:12px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	line-height:22px;
+	background-color:#F4C867;
+}
+img{
+	border:0px;
+}
+.top{
+	width:100%;
+	padding:0px;
+	margin:0px;
+
+}
+.StartGame{
+	margin:0px;
+	margin-top:260px;
+	margin-left:0px;
+}
+.StartGame a{
+	
+	width:139px;
+	height:180px;
+	display:block;
+	margin-left:570px;
+}
+.main{
+	margin:0px auto;
+	padding:0px;
+	width:960px;
+}
+.copyright{
+	background-image:url($WebfileServer/images/copyright.jpg);
+	width:960px;
+	height:80px;
+	margin:auto;
+	margin-top:50px;
+	margin-bottom:12px;
+}
+.main_left{
+	width:212px;
+	float:left;
+}
+.main_middle{
+	width:820px;
+	float:left;
+	background-repeat: no-repeat;
+}
+.main_right{
+	width:140px;
+	height:231px;
+	float:left;
+	
+}
+
+/* MainLeft  Login */
+
+.MainLogin{
+	width:100%;
+	margin:0px auto;
+	padding:0px;
+}
+.MainRegBotton{
+	margin:0px auto;
+	padding:0px;
+}
+.MainRegBotton a{
+	background-image:url($WebfileServer/images/reg_botton1.jpg);
+	width:196px;
+	height:72px;
+	display:block;
+	margin:auto;
+}
+.MainRegBotton a:hover{
+	background-image:url($WebfileServer/images/reg_botton2.jpg);
+	width:196px;
+	height:72px;
+	display:block;
+	margin:auto;
+}
+.MainPayBotton{
+	margin:0px auto;
+	padding:0px;
+}
+.MainPayBotton a{
+	background-image:url($WebfileServer/images/pay_botton.jpg);
+	width:196px;
+	height:72px;
+	display:block;
+	margin:auto;
+}
+.MainPayBotton a:hover{
+	background-image:url($WebfileServer/images/pay_botton2.jpg);
+	width:196px;
+	height:72px;
+	display:block;
+	margin:auto;
+}
+.FaqBug{
+	margin:0px auto;
+	padding:0px;
+	background-image: url($WebfileServer/images/FAQ_BUG.gif);
+	width:189px;
+	margin-top:8px;
+}
+.FaqBug a{
+	height:38px;
+	width:100px;
+	display:block;
+}
+
+.FaqBug ul{
+	margin:0px;
+	padding:0px;
+}
+.FaqBug li{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+	float:left;
+}
+.FaqBug li a{
+	width:80px;
+	height:34px;
+	display:block;
+	margin:2px;
+	margin-left:4px;
+}
+.Survey{
+	width:179px;
+	margin:0px auto;
+	padding:0px;
+	margin-top:8px;
+}
+.SurveyTop{
+	width:179px;
+	height:30px;
+	background-image:url($WebfileServer/images/tag_a.jpg);
+	color:#333333;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding-top:16px;
+	background-repeat: no-repeat;
+}
+.SurveyMain{
+	background-image:url($WebfileServer/images/tag_b.jpg);
+	margin:0px;
+	padding:0px;
+	color:#333333;
+	font-size:12px;
+	padding-left:12px;
+}
+.SurveyBottom{
+	width:179px;
+	height:21px;
+	background-image:url($WebfileServer/images/tag_c.jpg);
+}
+
+.SurveyTitle{
+	margin:0px;
+	padding:0px;
+	margin-left:12px;
+	font-size:14px;
+}
+.SurveyList{
+	margin:0px;
+	padding:0px;
+	color:#996600;
+	font-size:12px;
+	line-height:24px;
+	clear:none;
+}
+.SurveyList ul{
+	margin:0px;
+	padding:0px;
+}
+.SurveyList li{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+}
+.SurveyBotton{
+	margin:0px;
+	padding:0px;
+}
+.SurveyBotton ul{
+	margin:0px;
+	padding:0px;
+}
+.SurveyBotton li{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+	float:left;
+	margin-left:8px;
+}
+.SurveySubmit{
+	margin:0px;
+	padding:0px;
+	display:block;
+	width:50px;
+	height:18px;
+	background-image:url($WebfileServer/images/SurveySubmit.gif);
+}
+.SurveyResult{
+	margin:0px;
+	padding:0px;
+	display:block;
+	width:50px;
+	height:18px;
+	background-image:url($WebfileServer/images/SurveyResult.gif);
+}
+.NavReg{
+	padding-top:4px;
+	padding-bottom:4px;
+}
+.NavReg a{
+	color:#009933;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.NavReg a:hover{
+	color:#009933;
+	font-weight: bold;
+	text-decoration: none;
+}
+.ForgetPassword{
+	padding-top:4px;
+}
+.ForgetPassword a{
+	color:#CC0000;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.ForgetPassword a:hover{
+	color:#CC0000;
+	font-weight: bold;
+	text-decoration: none;
+}
+.UserText{
+	padding-top:0px;
+}
+.UserText input{
+	width:100px;
+}
+.Login_top_input{
+	width:120px;
+	font-size:12px;
+	color:#666666;
+	padding:2px;
+}
+.TopLogin{
+	background-image:url($WebfileServer/images/MainLogin_bg.jpg);
+	height:30px;
+}
+.Notice{
+	margin:0px auto;
+	padding:0px;
+	width:92%;
+	clear:both;
+}
+.GraphNotice{
+	float:left;
+	width:284px;
+	margin:0px auto;
+	padding:0px;
+	text-align:left;
+}
+.TextNotice{
+	float:right;
+	width:312px;
+	margin:0px auto;
+	padding:0px;
+}
+.TextNoticeTitle{
+	background-image:url($WebfileServer/images/TextNoticeTitle.jpg);
+	width:311px;
+	height:29px;
+}
+.TextNoticeTop2{
+	margin:0px auto;
+	padding:0px;
+	font-size:12px;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+}
+.TextNoticeTop2 ul{
+	margin: 0px auto;
+	padding:0px;
+	padding-top:6px;
+	padding-left:6px;
+	padding-right:6px;
+}
+.TextNoticeTop2 li{
+	font-size:12px;
+	padding:0px;
+	margin:0px auto;
+	color:#996600;
+	line-height:18px;
+	margin-top:6px;
+	list-style-type:none;
+}
+.TextNoticeTop2 a{
+	font-size:14px;
+	color:#333333;
+	font-weight: bold;
+	text-decoration: none;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+.TextNoticeTop2 a:hover{
+	color:#333333;
+	font-size:14px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+	margin-bottom:4px;
+}
+.TextNoticeList{
+	margin:0px auto;
+	padding:0px;
+	color:#333333;
+	padding-left:12px;
+	padding-top:8px;
+}
+.TextNoticeList ol{
+	margin:0px;
+	padding:0px;
+}
+.TextNoticeList li{
+	margin:0px auto;
+	padding:0px;
+	background-image:url($WebfileServer/images/TextNoticeList_Icon.gif);
+	padding-left:18px;
+	background-repeat: no-repeat;
+	background-position:0px 4px;
+	margin-top:1px;
+}
+.TextNoticeList li a{
+	color:#333333;
+	font-size: 12px;
+	text-decoration: none;
+}
+.TextNoticeList li a:hover{
+	color:#333333;
+	font-size:12px;
+	text-decoration: underline;	
+}
+.Interaction{
+	padding:0px;
+	margin:0px auto;
+}
+.InteractionPic{
+	float:left;
+	width:284px;
+	margin:0px auto;
+	padding:0px;
+}
+.Interaction_Title{
+	background-image:url($WebfileServer/images/Interaction_Title_Icon.gif);
+	width:260px;
+	height:24px;
+	padding-left:23px;
+	padding-top:5px;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.InteractionUser{
+	float:left;
+	width:312px;
+	margin:0px auto;
+	padding:0px;
+}
+.Interaction_user ul{
+	margin:0px auto;
+	padding:0px;
+	margin-top:8px;
+	margin-left:12px;
+	list-style-type:none;
+}
+.Interaction_user li{
+	float:left;
+	width:128px;
+	height:100px;
+	text-align:center;
+	margin:2px;
+}
+.Interaction_user li img{
+	border: 1px solid #666666;	
+}
+
+
+.Interaction_pic{
+	padding:0px;
+	margin:0px auto;
+}
+.Interaction_pic ul{
+	margin:0px auto;
+	padding:0px;
+	margin-top:8px;
+	margin-left:12px;
+	list-style-type:none;
+}
+.Interaction_pic li{
+	float:left;
+	width:128px;
+	height:100px;
+	text-align:center;
+	margin:2px;
+}
+.Interaction_pic li img{
+	border: 1px solid #666666;	
+}
+.Lexicography{
+	width:142px;
+	height:48px;
+	display:block;
+	margin:0px auto;
+	padding:0px;
+}
+.Lexicography a{
+	width:142px;
+	height:48px;
+	display:block;
+	background-image:url($WebfileServer/images/Lexicography_Icon.gif);
+}
+.Lexicography a:hover{
+	width:142px;
+	height:48px;
+	display:block;
+	background-image:url($WebfileServer/images/Lexicography2_Icon.gif);
+}
+.GameDate{
+	margin:0px auto;
+	padding:0px;
+}
+.GameDate a{
+	width:142px;
+	height:48px;
+	display:block;
+	background-image:url($WebfileServer/images/GameDate_Icon.gif);
+}
+.GameDate a:hover{
+	width:142px;
+	height:48px;
+	display:block;
+	background-image:url($WebfileServer/images/GameDate2_Icon.gif);
+}
+.NoticeTitle{
+	font-size:22px;
+	font-weight: bold;
+	color: #333333;
+	text-decoration: none;
+	padding-top:32px;
+	padding-bottom:8px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #996600;
+	font-family:"微软雅黑";
+}
+.NoticeText{
+	font-size:14px;
+	line-height:24px;
+	color:#5E3F00;
+	padding-top:12px;
+	width:100%;
+}
+.NoticeTime{
+	font-size:12px;
+	color:#333333;
+	padding-bottom:16px;
+	background-color: #FFC;
+	border: 1px solid #FBA82D;
+	padding:8px;
+	width:98%;
+	margin-top:6px;
+	text-align:center;
+}
+.page_back{
+	text-align:center;
+	font-size:14px;
+	color:#333;
+}
+.page_back a{
+	color:#333;
+	width:100px;
+	height:24px;
+	line-height:24px;
+	font-weight:bold;
+	display:block;
+	margin-top:24px;
+}
+.page_back a:hover{
+	color:#666;
+	width:100px;
+	height:24px;
+	line-height:24px;
+	font-weight:bold;
+	display:block;
+	margin-top:24px;
+	background-color:#FFC;
+}
+.ask_input{
+	width:200px;
+	padding:3px;
+	font-size:14px;
+	font-weight:bold;
+}
+.ask_input2{
+	width:450px;
+	height:132px;
+	padding:3px;
+	font-size:14px;
+	font-weight:normal;
+}
+.upload_input{
+	width:318px;
+	padding:3px;
+	font-size:14px;
+	font-weight:normal;
+}
+.upload_button{
+	width:80px;
+	padding:2px;
+	font-size:12px;
+	font-weight:normal;
+}
+.enclosure{
+	margin-top:4px;
+	padding-bottom:4px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #960;	
+}
+.send_button{
+	width:92px;
+	height:32px;
+	line-height:26px;
+	padding:2px;
+	font-size:14px;
+	font-weight:bold;
+}
+.TypeProblem{
+	margin:0px;
+	padding:0px;
+	padding-left:0px;
+}
+.TypeProblem label{
+	margin-right:12px;
+}
+.right_text{
+	background-image:url($WebfileServer/images/05281_25.png);
+	background-repeat:no-repeat;
+	width:300px;
+	height:32px;
+	padding-left:42px;
+	padding-top:6px;
+	margin:auto;
+	color:#333;
+	font-weight:bold;
+}
+.err_text{
+	background-image:url($WebfileServer/images/err_icon.png);
+	background-repeat:no-repeat;
+	width:180px;
+	height:32px;
+	padding-left:42px;
+	padding-top:10px;
+	margin:auto;
+	color:#333;
+	font-weight:bold;
+}
+-->
+</style>
+
+
+<script src="$WebfileServer/js/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+
+<body>
+<iframe width="100%" height="30px" scrolling="no" frameborder="0" src="login_before.aspx"></iframe>
+<div class="top">
+<script>
+var goSwidth = "100%"; 
+var goSheight = 470; 
+var goSflashfile = '$WebfileServer/swf/top.swf'; 
+var imgSrc = 'deded.gif'; 
+var goLink = 'http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&promoid=BIOW'; 
+</script>
+<script src="$WebfileServer/js/gobeta.js"></script>
+
+<script language="JavaScript" type="text/JavaScript">
+var nodeid="0";
+function ShowTemp()
+{
+   var Vote_Select = document.getElementsByName("Vote");
+   for(var i=0;i<Vote_Select.length;i++)
+   {
+     if(Vote_Select[i].checked)
+     {
+       nodeid=Vote_Select[i].value;
+       break;
+     }
+   }
+  window.open("Research_Post.aspx?parent_id=1&&vote="+nodeid);
+  // window.location.href="Research_Post.aspx?parent_id=1&&vote="+nodeid; 
+} 
+</script>
+
+</div>
+
+
+<div class="main">
+<div class="main_middle">
+    	<div class="Notice">
+        	<div class="NoticeTitle">客服中心</div>
+            <div class="NoticeTime">当您有问题要咨询，但又不方便使用电话服务时，客服推荐您使用免费快捷的在线问题提交，专业的客服人员会及时回复您的。</div>
+            <div class="NoticeText">
+              <table width="100%" border="0" cellspacing="1" cellpadding="4" bgcolor="#CC9933">
+                <tr>
+                  <td height="150" bgcolor="#F4C867">
+                  	      <div class="right_text"  #if( $Result==true) style="display:block;" #else style="display:none;" #end>提交成功，感谢您提出宝贵的建议！</div>
+                          <div class="err_text"  #if( $Result==false) style="display:block;" #else style="display:none;" #end>提交失败，请返回。</div>                  </td>
+</tr>
+<tr>
+            <td height="80" align="center" bgcolor="#F4C867"><input name="button2"  onclick="javascript:window.location.href='Contact_Center.aspx';" type="reset" class="send_button" id="button2" value="返 回" />
+              </td>
+</tr>
+              </table>
+            </div>
+    	</div>
+<!--        <br clear="all" /> -->
+  </div>
+    <div class="main_right">
+    	<div class="Lexicography">
+        	<a href="#"></a>
+        </div>
+      <div class="GameDate">
+        	<a href="#"></a>
+      </div>
+        <div>
+        	<img src="$WebfileServer/images/top_icon.jpg" />        </div>
+  </div>
+</div>
+<div class="copyright"></div>
+</body>
+</html>

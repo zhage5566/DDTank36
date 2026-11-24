@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<list>
+  <server id="1" ip="127.0.0.1" port="9408" key="1,7road" />
+  <server id="2" ip="127.0.0.1" port="9409" key="1,7road" />
+</list>

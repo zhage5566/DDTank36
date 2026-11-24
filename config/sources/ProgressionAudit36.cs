@@ -1,0 +1,17 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
+namespace Local36 {
+ public static class ProgressionAudit36 {
+  static readonly object Gate=new object();static bool ready;
+  static void Ensure(){lock(Gate){if(ready)return;using(var db=Open())using(var c=new SqlCommand(@"SET XACT_ABORT ON;BEGIN TRAN;DECLARE @l int;EXEC @l=sys.sp_getapplock @Resource=N'Local36_ProgressionAuditSchema',@LockMode='Exclusive',@LockOwner='Transaction',@LockTimeout=10000;IF @l<0 THROW 50000,'Audit schema busy',1;
+IF OBJECT_ID('dbo.Local36_ProgressionAudit') IS NULL CREATE TABLE dbo.Local36_ProgressionAudit(RequestID uniqueidentifier PRIMARY KEY,UserID int NOT NULL,Payload nvarchar(max) NOT NULL,BeforeJson nvarchar(max) NOT NULL,AfterJson nvarchar(max) NULL,Status nvarchar(30) NOT NULL,Error nvarchar(1000) NULL,CreatedUtc datetime2 NOT NULL DEFAULT SYSUTCDATETIME(),UpdatedUtc datetime2 NOT NULL DEFAULT SYSUTCDATETIME());COMMIT;",db))c.ExecuteNonQuery();ready=true;}}
+  public static string Begin(Guid request,int user,string payload,string before){Ensure();using(var db=Open())using(var tx=db.BeginTransaction(IsolationLevel.Serializable)){
+   using(var c=new SqlCommand("SELECT UserID,Payload,AfterJson,Status FROM dbo.Local36_ProgressionAudit WITH(UPDLOCK,HOLDLOCK) WHERE RequestID=@id",db,tx)){c.Parameters.AddWithValue("@id",request);using(var r=c.ExecuteReader())if(r.Read()){if(r.GetInt32(0)!=user||r.GetString(1)!=payload)throw new ArgumentException("同一请求编号不能对应不同修改");if(r.GetString(3)=="saved"){string result=r.GetString(2);r.Close();tx.Commit();return result;}throw new InvalidOperationException("该请求已记录为处理中或失败，请检查审计后用新编号重试");}}
+   using(var c=new SqlCommand("INSERT dbo.Local36_ProgressionAudit(RequestID,UserID,Payload,BeforeJson,Status) VALUES(@id,@user,@payload,@before,N'pending')",db,tx)){c.Parameters.AddWithValue("@id",request);c.Parameters.AddWithValue("@user",user);c.Parameters.AddWithValue("@payload",payload);c.Parameters.AddWithValue("@before",before);c.ExecuteNonQuery();}tx.Commit();return null;
+  }}
+  public static void Complete(Guid id,string result,string error){Ensure();using(var db=Open())using(var c=new SqlCommand("UPDATE dbo.Local36_ProgressionAudit SET Status=@status,AfterJson=@after,Error=@error,UpdatedUtc=SYSUTCDATETIME() WHERE RequestID=@id",db)){c.Parameters.AddWithValue("@id",id);c.Parameters.AddWithValue("@status",error==null?"saved":"failed");c.Parameters.AddWithValue("@after",(object)result??DBNull.Value);c.Parameters.AddWithValue("@error",error==null?(object)DBNull.Value:error.Substring(0,Math.Min(error.Length,1000)));if(c.ExecuteNonQuery()!=1)throw new InvalidOperationException("未找到修改审计记录");}}
+  public static object Recent(int user){Ensure();var rows=new System.Collections.Generic.List<object>();using(var db=Open())using(var c=new SqlCommand("SELECT TOP(30) RequestID,Status,BeforeJson,AfterJson,Error,CreatedUtc FROM dbo.Local36_ProgressionAudit WHERE UserID=@user ORDER BY CreatedUtc DESC",db)){c.Parameters.AddWithValue("@user",user);using(var r=c.ExecuteReader())while(r.Read())rows.Add(new{requestId=r.GetGuid(0).ToString(),status=r.GetString(1),before=r.GetString(2),after=r.IsDBNull(3)?null:r.GetString(3),error=r.IsDBNull(4)?null:r.GetString(4),createdUtc=DateTime.SpecifyKind(r.GetDateTime(5),DateTimeKind.Utc).ToString("o")});}return new{ok=true,rows=rows};}
+  static SqlConnection Open(){var db=new SqlConnection(Paths36.Db);db.Open();return db;}
+ }
+}

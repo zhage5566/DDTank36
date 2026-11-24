@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Center_Set_Password.aspx.cs" Inherits="DanDanTang.Center_Set_Password" %>

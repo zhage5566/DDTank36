@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>重置密码</title>
+	<link href="$WebfileServer/style/style.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" language="javascript">
+var xmlHttp = null;
+　　　　var listLable=null;
+　　　　function CheckUser(Control,lable,type)
+　　　　{
+　　　　　　try
+　　　　　　{
+　　　　　　　　xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+　　　　　　　　listLable=lable;
+　　　　　　}
+　　　　　　catch(err1)
+　　　　　　{
+　　　　　　　　try
+　　　　　　　　{
+　　　　　　　　　　xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+　　　　　　　　}
+　　　　　　　　catch(err2)
+　　　　　　　　{
+　　　　　　　　　　xmlHttp = new XMLHttpRequest();
+　　　　　　　　}
+　　　　　　}
+　　　　　　var data = document.getElementById(Control);
+　　　　　　var url = "check.aspx?ControlData=" + data.value+"&&type="+type;
+　　　　　　xmlHttp.open("GET",url,true);
+　　　　　　xmlHttp.onreadystatechange = OnHandler;
+　　　　　　xmlHttp.send(null);
+　　   }
+　　　 function OnHandler()
+　　　　{
+　　　　　　if(xmlHttp.readyState == 4)
+　　　　　　{
+　　　　　　　　var isValid = xmlHttp.responseText;
+　　　　　　　　var exists = document.getElementById(listLable);
+　　　　　　　　exists.innerHTML = isValid;
+　　　　　　}
+　　　　}
+　　 function checkconfirmpwd(tp1,tp2,list3)
+     {
+          var two= document.getElementById(list3);
+           if(document.getElementById(tp1).value!=document.getElementById(tp2).value)
+            {                                             
+ 　　　　　　　　two.innerHTML = "两次输入不成功";
+            } 
+            else
+            {
+                two.innerHTML = "成功";
+            }
+      }
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+</script>
+<title>用户登录</title>
+</head>
+<html>
+<body onload="MM_preloadImages('$WebfileServer/images/back_botton_over.jpg','$WebfileServer/images/close_window_over.jpg')">
+<form action="reg_ok.aspx" method="post" name="form1">
+  <div class="main">
+    <div class="top_bg_a"></div>
+    <div class="reg_bg">
+      <div class="nav">
+        <ul>
+						<li class="logo"><a href="http://127.0.0.1/" title="弹弹堂"></a></li>
+						<li class="space"></li>
+						<li class="nav_BackHome"><a href="Userlogin.aspx" title="注册账号"></a></li>
+						<li class="reg"><a href="Reg.aspx" title="注册账号"></a></li>
+						<li class="change"><a href="Change_Password.aspx" title="修改密码"></a></li>				
+						<li class="forget"><a href="Forget_password.aspx" title="忘记密码"></a></li>
+						<li class="ingame"><a href="http://127.0.0.1/" title="弹弹堂"></a></li>	
+        </ul>
+      </div>
+      <div class="reg_content ">
+        <div class="reg_title"><span class="title_Highlight">修改密码：此页面为修改密码结果.</span></div>
+        <div class="reg_table">
+          <table cellspacing="0" cellpadding="0" width="650" border="0">
+            <tbody>
+              <tr>
+                <td height="100" colspan="2" align="left">
+
+
+                  #if( $Result==true)
+                     <!-- 发送成功 -->
+               	     <div class="right_text">密码修改成功！</div>
+                  #else   
+                    <!-- 发送失败 -->
+                    <div class="err_text">密码修改失败，请重新找回密码。</div>
+                  #end
+                </td>
+</tr>
+              <tr>
+                <td width="391" colspan="2">&nbsp;</td>
+              </tr>
+<tr>
+<td height="120" colspan="2" align="center" valign="top"><table width="224" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="112" align="center"><a href="UserLogin.aspx" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','$WebfileServer/images/back_botton_over.jpg',1)"><img src="$WebfileServer/images/back_botton.jpg" name="Image2" width="84" height="36" border="0" id="Image2" /></a></td>
+    <td align="center"><a href="#" onclick="mm()" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','$WebfileServer/images/close_window_over.jpg',1)"><img src="$WebfileServer/images/close_window.jpg" name="Image3" width="84" height="36" border="0" id="Image3" /></a></td>
+  </tr>
+</table></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="bottom_bg_a"></div>
+    <div class="copyright_web">&copy; 2022-2023 经典怀旧.com All Rights Reserved. 经典弹弹堂 版权所有</div>
+  </div>
+  <script language="javascript" type="text/javascript">
+    validator.registorAll([["TextName",inputType.notEmpty],
+    ["Ib_Reg",inputType.submit],["TextEmail",inputType.canEmptyIsEmail]]);
+    </script>
+</form>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<%@ Page Language="C#" %><% Response.Redirect("/Register/UserLogin.aspx" + Request.Url.Query); %>
