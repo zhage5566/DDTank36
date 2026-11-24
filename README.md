@@ -4,7 +4,7 @@
 
 ## 使用完整发行包
 
-在本仓库 Releases 下载 `DDTank36-Windows-x64-20261103.zip.part*` 的所有分卷及 `SHA256SUMS.json`、`合并发行包.ps1`，放入同一目录，在 PowerShell 执行 `powershell -ExecutionPolicy Bypass -File .\合并发行包.ps1`。脚本校验各分卷和合并结果，生成 ZIP 后完整解压。详见 [详细部署方法](详细部署方法.md)。
+在本仓库 Releases 下载 `DDTank36-Windows-x64-20261103.zip.part*` 的所有分卷及 `SHA256SUMS.json`、`merge-release.ps1`，放入同一目录，在 PowerShell 执行 `powershell -ExecutionPolicy Bypass -File .\merge-release.ps1`。脚本校验各分卷和合并结果，生成 ZIP 后完整解压。详见 [详细部署方法](详细部署方法.md)。
 
 发行包沿用原目录中 2026-11-03 的中文脱敏发行版，不使用旧版完整修复包，也不重复上传独立 MDF/LDF 数据库副本。
 
